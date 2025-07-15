@@ -1,0 +1,7 @@
+{
+  "code_file": "tmp/random.wasm",
+  "function": "randomNFT",
+  "input": {
+    "random_length": 3
+  }
+}

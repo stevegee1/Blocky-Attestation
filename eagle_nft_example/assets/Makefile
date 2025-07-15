@@ -37,6 +37,13 @@ tmp/random.wasm: $(SRCS) $(DEPS) | tmp check
 .PHONY: build
 build: tmp/random.wasm
 
+.PHONY: run
+run: check build
+	@echo "Running WASM module..."
+	@cat fn-call.json | bky-as attest-fn-call >tmp/out.json
+	@echo "Output:"
+	@jq -r '.transitive_attested_function_call.claims.output | @base64d | fromjson' tmp/out.json
+
 .PHONY: clean
 clean:
 	@rm -rf tmp
